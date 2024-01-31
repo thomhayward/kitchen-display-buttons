@@ -1,0 +1,9 @@
+[Unit]
+Description=Kitchen Display Buttons Manager
+
+[Service]
+ExecStart=/usr/local/bin/kitchen-display-buttons
+Restart=always
+
+[Install]
+WantedBy=network-online.target
