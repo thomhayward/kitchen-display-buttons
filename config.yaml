@@ -1,0 +1,9 @@
+url: mqtt://mqtt.tjh.dev
+filter: fizzle/meter-display/button/+
+mappings:
+  A:
+    - topic: tasmota/cmnd/lounge/light2/power
+      payload: toggle
+  B: 
+    - topic: tasmota/cmnd/lounge/light/power
+      payload: toggle
