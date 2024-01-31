@@ -2,7 +2,7 @@
 name = "kitchen-display-buttons"
 authors = ["tjh"]
 license = "MIT"
-version = "0.0.0"
+version = "1.0.0"
 edition = "2021"
 
 [dependencies]
@@ -23,6 +23,7 @@ opt-level = "s"
 lto = "fat"
 
 [package.metadata.deb]
+revision = ""
 maintainer-scripts = "debian/"
 systemd-units = { enable = true }
 assets = [
