@@ -31,4 +31,5 @@ jobs:
       - name: Upload binary to release
         uses: svenstaro/upload-release-action@v2
         with:
+          file_glob: true
           file: target/debian/*.deb
