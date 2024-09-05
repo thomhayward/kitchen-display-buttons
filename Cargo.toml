@@ -28,5 +28,6 @@ revision = ""
 maintainer-scripts = "debian/"
 systemd-units = { enable = true }
 assets = [
-  ["target/release/kitchen-display-buttons", "usr/local/bin/", "755"]
+  ["target/release/kitchen-display-buttons", "usr/local/bin/", "755"],
+  ["example-config.yaml", "etc/kitchen-display-buttons/config.yaml", "644"]
 ]
