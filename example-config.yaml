@@ -1,5 +1,5 @@
-url: mqtt://mqtt.tjh.dev
-filter: fizzle/meter-display/button/+
+url: mqtt://localhost
+filter: display/button/+
 mappings:
   A:
     - topic: tasmota/cmnd/lounge/light2/power

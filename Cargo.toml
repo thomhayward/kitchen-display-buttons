@@ -2,11 +2,12 @@
 name = "kitchen-display-buttons"
 authors = ["tjh"]
 license = "MIT OR Apache-2.0"
-version = "1.0.0"
+version = "2.0.0"
 edition = "2021"
 
 [dependencies]
 anyhow = "1.0.79"
+clap = { version = "4.5.17", features = ["derive", "env"] }
 mqtt = { git = "https://github.com/tjh-dev/mqtt", branch = "dev", version = "0.3.1", package = "tjh-mqtt", features = [
   "serde",
   "tokio-client",
@@ -27,5 +28,6 @@ revision = ""
 maintainer-scripts = "debian/"
 systemd-units = { enable = true }
 assets = [
-  ["target/release/kitchen-display-buttons", "usr/local/bin/", "755"]
+  ["target/release/kitchen-display-buttons", "usr/local/bin/", "755"],
+  ["example-config.yaml", "etc/kitchen-display-buttons/config.yaml", "644"]
 ]
