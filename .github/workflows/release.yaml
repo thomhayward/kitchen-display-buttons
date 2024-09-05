@@ -1,0 +1,33 @@
+name: Release
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build: runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-deb
+        shell: bash
+        run: |
+          cargo install cargo-deb
+
+      - name: Build package
+        run: cargo deb
+
+      - name: Upload binary to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: target/debian/*.deb
