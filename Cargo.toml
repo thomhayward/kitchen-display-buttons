@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.79"
+clap = { version = "4.5.17", features = ["derive", "env"] }
 mqtt = { git = "https://github.com/tjh-dev/mqtt", branch = "dev", version = "0.3.1", package = "tjh-mqtt", features = [
   "serde",
   "tokio-client",

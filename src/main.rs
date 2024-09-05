@@ -1,24 +1,8 @@
-use mqtt::{Filter, QoS::AtMostOnce, Topic};
-use serde::Deserialize;
-use std::collections::HashMap;
+mod clap;
+mod config;
 
-#[derive(Deserialize)]
-struct Config {
-    #[serde(borrow)]
-    url: &'static str,
-    #[serde(borrow)]
-    filter: &'static Filter,
-    #[serde(borrow)]
-    mappings: HashMap<&'static str, Vec<Mapping>>,
-}
-
-#[derive(Deserialize)]
-struct Mapping {
-    #[serde(borrow)]
-    topic: &'static Topic,
-    #[serde(borrow)]
-    payload: &'static str,
-}
+use config::{Config, Mapping};
+use mqtt::QoS::AtMostOnce;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> anyhow::Result<()> {
@@ -28,7 +12,7 @@ async fn main() -> anyhow::Result<()> {
         url,
         filter,
         mappings,
-    } = serde_yaml::from_str(include_str!("../config.yaml"))?;
+    } = clap::parse().configuration()?.leak();
     let (client, _) = mqtt::create_client(url.try_into()?);
 
     let mut buttons = client.subscribe(filter, 2).await?;
